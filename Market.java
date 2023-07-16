@@ -7,6 +7,9 @@ import java.util.Queue;
  */
 public class Market implements QueueBehaviour, MarketBehaviour {
 
+    /**
+     * Коллекция, представляющая очередь в магазине.
+     */
     private Queue<String> queue;
 
     public Market() {
@@ -78,6 +81,28 @@ public class Market implements QueueBehaviour, MarketBehaviour {
      */
     @Override
     public void update() {
-        // Реализация обновления состояния магазина
-        // ...
-    }}
+        if (!isEmpty()) {
+            // Получаем следующего человека в очереди
+            String nextPerson = serveNextPerson();
+
+            // Обрабатываем заказ покупателя
+            processOrder(nextPerson);
+
+            System.out.println("Обработан заказ для покупателя: " + nextPerson);
+        } else {
+            System.out.println("Очередь пуста. Нет заказов для обработки.");
+        }
+    }
+
+    private void processOrder(String person) {
+        // В данном методе можно реализовать логику обработки заказа для покупателя
+        // Например, можно сгенерировать случайное время обработки и задержку с помощью Thread.sleep()
+        // Для примера, просто выведем информацию о том, что заказ обрабатывается
+        System.out.println("Обрабатывается заказ для покупателя: " + person);
+        try {
+            Thread.sleep(8000); // Задержка в 8 секунды для имитации обработки заказа
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}

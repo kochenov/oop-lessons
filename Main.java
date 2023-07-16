@@ -4,13 +4,22 @@ public class Main {
         market.addPerson("Игорь");
         market.addPerson("Вася");
         market.addPerson("Катя");
+        market.addPerson("Ирина");
+        market.addPerson("Валентина");
+        market.addPerson("Егор");
 
-        System.out.println("Размер очереди: " + market.size()); // Ожидаемый вывод: Queue size: 3
+        System.out.println("Размер очереди: " + market.size());
 
-        String nextPerson = market.serveNextPerson();
-        System.out.println("Обслужен следующий человек: " + nextPerson); // Ожидаемый вывод: Next person served: John
+        while (!market.isEmpty()) {
+            market.update(); // Обработка заказов
+            if (market.size() != 0) {
+                System.out.println("Размер очереди после обслуживания: " + market.size() + "\n******");
+            }
 
-        System.out.println("Размер очереди после обслуживания: " + market.size()); // Ожидаемый вывод: Queue size after serving: 2
+        }
+
+        System.out.println("Все клиенты обработаны. Очередь пуста.");
+
 
     }
 }
