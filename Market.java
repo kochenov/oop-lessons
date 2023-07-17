@@ -1,11 +1,12 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Iterator;
 
 /**
  * Класс Market реализует методы из интерфейсов QueueBehaviour и MarketBehaviour.
  * Он имитирует работу очереди в магазине и обновление состояния магазина.
  */
-public class Market implements QueueBehaviour, MarketBehaviour {
+public class Market implements QueueBehaviour, MarketBehaviour, Iterable<String> {
 
     /**
      * Коллекция, представляющая очередь в магазине.
@@ -100,9 +101,20 @@ public class Market implements QueueBehaviour, MarketBehaviour {
         // Для примера, просто выведем информацию о том, что заказ обрабатывается
         System.out.println("Обрабатывается заказ для покупателя: " + person);
         try {
-            Thread.sleep(8000); // Задержка в 8 секунды для имитации обработки заказа
+            Thread.sleep(2000); // Задержка в 2 секунды для имитации обработки заказа
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Возвращает итератор для обхода элементов очереди.
+     *
+     * @return итератор для обхода элементов очереди
+     */
+    @Override
+    public Iterator<String> iterator() {
+        Queue<String> queueCopy = new LinkedList<>(queue);
+        return queueCopy.iterator();
     }
 }

@@ -10,16 +10,11 @@ public class Main {
 
         System.out.println("Размер очереди: " + market.size());
 
-        while (!market.isEmpty()) {
-            market.update(); // Обработка заказов
-            if (market.size() != 0) {
-                System.out.println("Размер очереди после обслуживания: " + market.size() + "\n******");
-            }
-
+        for (String person : market) {
+            market.update();
+            System.out.println("Размер очереди после обслуживания: " + market.size() + "\n");
         }
 
         System.out.println("Все клиенты обработаны. Очередь пуста.");
-
-
     }
 }
